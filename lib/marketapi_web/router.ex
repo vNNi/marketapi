@@ -7,6 +7,7 @@ defmodule MarketapiWeb.Router do
 
   scope "/api", MarketapiWeb do
     pipe_through :api
+    resources "/itens", ItemController, except: [:new, :edit]
   end
 
   pipeline :browser do
