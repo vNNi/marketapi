@@ -3,13 +3,14 @@ use Mix.Config
 # Configure your database
 config :marketapi, Marketapi.Repo,
   username: "root",
-  password: "12345",
+  password: "",
   database: "market",
-  hostname: "localhost",
+  hostname: "0.0.0.0",
+  port: 3306,
   charset: "utf8",
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
-
+  pool_size: 10,
+  queue_target: 80000
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

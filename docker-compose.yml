@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+    phoenix:
+        build: .
+        ports:
+          - '4000:4000'
+        depends_on: 
+          - db
+        volumes:
+          - .:/app
+        links: 
+          - db
+
+    db:
+      image: mysql:5.7
+      restart: always
+      volumes:
+        - db-data:/var/lib/mysql
+      environment:
+        MYSQL_DATABASE: 'market'
+        MYSQL_USER: 'root'
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+      expose: ['3306']
+      ports: 
+        - '3306:3306'
+
+volumes:
+    db-data:
